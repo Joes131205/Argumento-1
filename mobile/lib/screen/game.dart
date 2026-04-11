@@ -1,27 +1,21 @@
 import 'package:flutter/material.dart';
 
-class name extends StatefulWidget {
-  const name({super.key});
+class GameScreen extends StatefulWidget {
+  const GameScreen({super.key});
 
   @override
-  _nameState createState() => _nameState();
+  _GameScreenState createState() => _GameScreenState();
 }
 
-class _nameState extends State<name> {
+class _GameScreenState extends State<GameScreen> {
   int _currentIndex = 0;
 
   final List<Widget> _screens = [
     const Center(
-      child: Text(
-        'TERMINAL INTERFACE LOADING...',
-        style: TextStyle(color: Colors.greenAccent),
-      ),
+      child: Text('Terminal.', style: TextStyle(color: Colors.greenAccent)),
     ),
     const Center(
-      child: Text(
-        'MANUAL DATABANKS OPEN...',
-        style: TextStyle(color: Colors.white),
-      ),
+      child: Text('Manual.', style: TextStyle(color: Colors.greenAccent)),
     ),
   ];
 

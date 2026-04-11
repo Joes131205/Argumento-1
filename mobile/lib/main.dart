@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:mobile/screen/landing.dart';
+import 'package:mobile/screen/dashboard.dart';
+import 'package:mobile/screen/game.dart';
 
 void main() {
   runApp(const MyApp());
@@ -29,7 +30,7 @@ class MyApp extends StatelessWidget {
         ),
       ),
 
-      home: LandingScreen(),
+      home: DashboardScreen(),
     );
   }
 }
