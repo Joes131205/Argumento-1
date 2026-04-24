@@ -55,9 +55,9 @@ class _ShopScreenState extends State<ShopScreen> {
     if (user == null) return;
 
     if (user.totalCoins < (item['price'] as int)) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Insufficient coins')),
-      );
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(const SnackBar(content: Text('Insufficient coins')));
       return;
     }
 
@@ -78,9 +78,9 @@ class _ShopScreenState extends State<ShopScreen> {
 
       if (response.statusCode == 200) {
         if (mounted) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text('Purchased ${item['name']}')),
-          );
+          ScaffoldMessenger.of(
+            context,
+          ).showSnackBar(SnackBar(content: Text('Purchased ${item['name']}')));
           await userProvider.updateUser();
           setState(() {
             _shopFuture = _fetchShop();
@@ -91,9 +91,9 @@ class _ShopScreenState extends State<ShopScreen> {
       }
     } catch (e) {
       if (mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Error: $e')),
-        );
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(SnackBar(content: Text('Error: $e')));
       }
     } finally {
       if (mounted) {
@@ -108,7 +108,7 @@ class _ShopScreenState extends State<ShopScreen> {
     try {
       final prefs = await SharedPreferences.getInstance();
       final token = prefs.getString("token");
-      
+
       final response = await http.put(
         Uri.parse('http://localhost:3000/api/users/theme'),
         headers: {
@@ -120,16 +120,16 @@ class _ShopScreenState extends State<ShopScreen> {
 
       if (response.statusCode == 200) {
         if (mounted) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text('Equipped ${item['name']}')),
-          );
+          ScaffoldMessenger.of(
+            context,
+          ).showSnackBar(SnackBar(content: Text('Equipped ${item['name']}')));
         }
       }
     } catch (e) {
       if (mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Error: $e')),
-        );
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(SnackBar(content: Text('Error: $e')));
       }
     } finally {
       if (mounted) {
@@ -174,11 +174,7 @@ class _ShopScreenState extends State<ShopScreen> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Icon(
-                      Icons.lock,
-                      color: Colors.red,
-                      size: 48,
-                    ),
+                    Icon(Icons.lock, color: Colors.red, size: 48),
                     const SizedBox(height: 16),
                     Text(
                       'Restricted Area',
@@ -191,9 +187,7 @@ class _ShopScreenState extends State<ShopScreen> {
                     const SizedBox(height: 8),
                     Text(
                       'Verify your email to access the shop',
-                      style: GoogleFonts.spaceGrotesk(
-                        color: Colors.grey[400],
-                      ),
+                      style: GoogleFonts.spaceGrotesk(color: Colors.grey[400]),
                       textAlign: TextAlign.center,
                     ),
                   ],
@@ -271,7 +265,8 @@ class _ShopScreenState extends State<ShopScreen> {
                   itemCount: themes.length,
                   itemBuilder: (context, index) {
                     final theme = themes[index] as Map<String, dynamic>;
-                    final isAffordable = user.totalCoins >= (theme['price'] as int);
+                    final isAffordable =
+                        user.totalCoins >= (theme['price'] as int);
 
                     return Container(
                       decoration: BoxDecoration(
@@ -279,7 +274,9 @@ class _ShopScreenState extends State<ShopScreen> {
                         borderRadius: BorderRadius.circular(8),
                         border: Border.all(
                           color: Color(
-                            int.parse('0xff${theme['hex'].toString().replaceFirst('#', '')}'),
+                            int.parse(
+                              '0xff${theme['hex'].toString().replaceFirst('#', '')}',
+                            ),
                           ),
                           width: 2,
                         ),
@@ -318,7 +315,9 @@ class _ShopScreenState extends State<ShopScreen> {
                             Text(
                               '${theme['price']} coins',
                               style: GoogleFonts.spaceGrotesk(
-                                color: isAffordable ? Colors.amber[400] : Colors.red,
+                                color: isAffordable
+                                    ? Colors.amber[400]
+                                    : Colors.red,
                                 fontWeight: FontWeight.bold,
                                 fontSize: 12,
                               ),
