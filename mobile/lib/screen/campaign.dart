@@ -33,7 +33,7 @@ class _CampaignScreenState extends State<CampaignScreen> {
     final token = prefs.getString("token") ?? '';
 
     final response = await http.get(
-      Uri.parse('http://localhost:3000/api/campaign'),
+      Uri.parse('https://argumento-api.vercel.app/api/campaign'),
       headers: {
         'Content-Type': 'application/json',
         'Authorization': 'Bearer $token',

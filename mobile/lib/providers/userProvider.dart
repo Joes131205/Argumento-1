@@ -22,7 +22,7 @@ class UserProvider extends ChangeNotifier {
     notifyListeners();
 
     try {
-      final getMeUri = Uri.parse('http://localhost:3000/api/auth');
+      final getMeUri = Uri.parse('https://argumento-api.vercel.app/api/auth');
       final prefs = await SharedPreferences.getInstance();
       final token = prefs.getString("token");
 
@@ -57,7 +57,7 @@ class UserProvider extends ChangeNotifier {
 
     try {
       final response = await http.post(
-        Uri.parse('http://localhost:3000/api/auth/login'),
+        Uri.parse('https://argumento-api.vercel.app/api/auth/login'),
         headers: {'Content-Type': 'application/json'},
         body: jsonEncode({'username': username.trim(), 'password': password}),
       );
@@ -101,7 +101,7 @@ class UserProvider extends ChangeNotifier {
       }
 
       final response = await http.post(
-        Uri.parse('http://localhost:3000/api/auth/register'),
+        Uri.parse('https://argumento-api.vercel.app/api/auth/register'),
         headers: {'Content-Type': 'application/json'},
         body: jsonEncode({
           'username': username.trim(),
@@ -139,7 +139,7 @@ class UserProvider extends ChangeNotifier {
       final token = prefs.getString("token");
 
       final response = await http.get(
-        Uri.parse('http://localhost:3000/api/auth'),
+        Uri.parse('https://argumento-api.vercel.app/api/auth'),
         headers: {
           "Content-Type": "application/json",
           "Authorization": "Bearer $token",

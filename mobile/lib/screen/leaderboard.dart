@@ -36,7 +36,7 @@ class _LeaderboardScreenState extends State<LeaderboardScreen> {
       final prefs = await SharedPreferences.getInstance();
       final token = prefs.getString("token");
       final response = await http.get(
-        Uri.parse('http://localhost:3000/api/leaderboard/$type'),
+        Uri.parse('https://argumento-api.vercel.app/api/leaderboard/$type'),
         headers: {
           'Authorization': 'Bearer $token',
           'Content-Type': 'application/json',

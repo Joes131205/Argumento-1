@@ -103,7 +103,7 @@ class _CampaignGameComponentState extends State<CampaignGameComponent> {
 
       final response = await http.post(
         Uri.parse(
-          'http://localhost:3000/api/campaign/complete/${widget.campaignId}/${widget.levelId}',
+          'https://argumento-api.vercel.app/api/campaign/complete/${widget.campaignId}/${widget.levelId}',
         ),
         headers: {
           'Content-Type': 'application/json',

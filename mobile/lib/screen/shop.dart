@@ -31,7 +31,7 @@ class _ShopScreenState extends State<ShopScreen> {
       final token = prefs.getString("token");
 
       final response = await http.get(
-        Uri.parse('http://localhost:3000/api/shops'),
+        Uri.parse('https://argumento-api.vercel.app/api/shops'),
         headers: {
           'Authorization': 'Bearer $token',
           'Content-Type': 'application/json',
@@ -69,7 +69,7 @@ class _ShopScreenState extends State<ShopScreen> {
       final token = prefs.getString("token");
 
       final response = await http.put(
-        Uri.parse('http://localhost:3000/api/shops'),
+        Uri.parse('https://argumento-api.vercel.app/api/shops'),
         headers: {
           'Authorization': 'Bearer $token',
           'Content-Type': 'application/json',
@@ -113,7 +113,7 @@ class _ShopScreenState extends State<ShopScreen> {
       final token = prefs.getString("token");
 
       final response = await http.put(
-        Uri.parse('http://localhost:3000/api/users/theme'),
+        Uri.parse('https://argumento-api.vercel.app/api/users/theme'),
         headers: {
           'Authorization': 'Bearer $token',
           'Content-Type': 'application/json',

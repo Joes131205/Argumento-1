@@ -123,7 +123,7 @@ class _GameSetupState extends State<GameSetup> {
       }
 
       final response = await http.post(
-        Uri.parse('http://localhost:3000/api/shifts/generate'),
+        Uri.parse('https://argumento-api.vercel.app/api/shifts/generate'),
         headers: {
           'Content-Type': 'application/json',
           if (token != null) 'Authorization': 'Bearer $token',

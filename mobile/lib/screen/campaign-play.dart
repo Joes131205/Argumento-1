@@ -39,7 +39,7 @@ class _CampaignPlayScreenState extends State<CampaignPlayScreen> {
       final token = prefs.getString("token");
       final response = await http.get(
         Uri.parse(
-          'http://localhost:3000/api/campaign/${widget.campaignId}/${widget.levelId}',
+          'https://argumento-api.vercel.app/api/campaign/${widget.campaignId}/${widget.levelId}',
         ),
         headers: {
           'Authorization': 'Bearer $token',

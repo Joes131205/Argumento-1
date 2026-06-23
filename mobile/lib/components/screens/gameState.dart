@@ -95,7 +95,7 @@ class _GameStateComponentState extends State<GameStateComponent> {
     if (currentPost == null) return null;
 
     final response = await http.post(
-      Uri.parse('http://localhost:3000/api/judge'),
+      Uri.parse('https://argumento-api.vercel.app/api/judge'),
       headers: {
         'Content-Type': 'application/json',
         if (token != null) 'Authorization': 'Bearer $token',
@@ -250,7 +250,7 @@ class _GameStateComponentState extends State<GameStateComponent> {
       );
 
       final response = await http.put(
-        Uri.parse('http://localhost:3000/api/shifts/complete'),
+        Uri.parse('https://argumento-api.vercel.app/api/shifts/complete'),
         headers: {
           'Content-Type': 'application/json',
           if (token != null) 'Authorization': 'Bearer $token',
